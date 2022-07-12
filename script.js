@@ -1,30 +1,17 @@
-const contadorBloco = document.querySelector
-(".contador-bloco");
-const contadorActionIniciar = document.querySelector
-("#contador-action-iniciar");
-const contadorNumeroContent = document.querySelector
-(".contador-numero-content");
-const contadorNumero = document.querySelector
-(".contador-numero");
-let count = 1;
-let interval = null;
-
-contadorActionIniciar.addEventListener("click", () => {
-    setInterval(() => {
-        contadorActionIniciar.setAttribute("id", "disable-button");
-        executeAnimation();
-    }, toMs(0.5));
-    
+const contador = new Vue({
+    el: "#app",
+    data: {
+        count: 0,
+        class_name: "contador-bloco",
+        id_name: "contador-action-iniciar"
+    },
+    methods: {
+        start() {
+            setInterval(() => {
+                this.count ++;
+                this.class_name += " rotate-bloco";
+                this.id_name = "disable-button";
+            }, 500)
+        }
+    },
 })
-
-
-function executeAnimation() {
-    contadorBloco.classList.add("rotate-bloco");
-    contadorNumeroContent.textContent = count;
-    count ++;
-}
-
-function toMs(secondsValue) {
-    return secondsValue * 1000;
-}
-

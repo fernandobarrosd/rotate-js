@@ -8,19 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="contador-rotacao-container">
-        <div class="contador-bloco"></div>
-        <div class="contador-action">
-            <input type="button" 
-            id="contador-action-iniciar"
-            value="Iniciar">
-        </div>
-        <div class="contador-numero">
-            <p class="contador-numero-content">
-                0
-            </p>
+    <div id="app">
+        <div class="contador-rotacao-container">
+            <div v-bind:class="class_name"></div>
+            <div class="contador-action">
+                <input type="button" 
+                v-bind:id="id_name"
+                value="Iniciar" v-on:click="start">
+            </div>
+            <div class="contador-numero">
+                <p class="contador-numero-content">
+                    {{count}}
+                </p>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
